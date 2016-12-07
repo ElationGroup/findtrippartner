@@ -1,0 +1,191 @@
+<h3 class="booking-title">{$resultCount} Rental Cars in {if $location eq ""} Your Location {else} {$location} Location {/if}</h3>
+
+<div class="booking-item-dates-change mb30">
+	<form class="input-daterange" method="GET" action="/search/">
+    	<div class="row">
+             <div class="col-md-6">
+	            <div class="form-group form-group-lg form-group-icon-left form-group-focus"><i class="fa fa-map-marker input-icon"></i>
+					<label>Your Location</label>
+                    <span class="twitter-typeahead" style="position: relative; display: block; direction: ltr;">
+						<input value="{$location}" name="loc" class="typeahead form-control tt-input" placeholder="Type your location" type="text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+					</span>
+				</div>
+			</div>
+             <div class="col-md-3">
+             	<div class="form-group form-group-lg form-group-select-plus">
+             		<label>Approx Passanger</label>
+             		<select class="form-control" name="noofpass">
+                         <option value="1-4" {if $noOfPass eq '1-4'}selected{/if}>1-4</option>
+                         <option value="5-7" {if $noOfPass eq '5-7'}selected{/if}>5-7</option>
+                         <option value="8-11" {if $noOfPass eq '8-11'}selected{/if}>8-11</option>
+                         <option value="11" {if $noOfPass eq '11'}selected{/if}>11+</option>
+                     </select>
+             	</div>
+             </div>
+             <div class="col-md-3">
+             	<label>&nbsp;</label>
+             	<button class="btn btn-primary btn-lg" type="submit">Search for Cars</button>
+             </div>
+         </div>
+      </form>
+ </div>
+ 
+ <div class="row">
+    <div class="col-md-3">
+    	<form method="GET" action="/search/"> 
+	        <aside class="booking-filters text-white">
+	            <h3>Filter By:</h3>
+	            
+	            <ul class="list booking-filters-list">
+		            <li>
+		                <h5 class="booking-filters-title">Vehicle Category</h5>
+		                <div class="form-group">
+							<select id="vehicleCat" name="category" class="form-control" onchange="">
+								<option value="">ALL</option>
+								{html_options options=$vehicleCat selected=$filters.category}		
+							</select>
+						</div>
+		            </li>
+		            
+		            <li>
+		                <h5 class="booking-filters-title">Led?</h5>
+		                <div class="form-group">
+							<select id="isLed" name="isLed" class="form-control">
+								<option value="">ALL</option>
+								<option value="y" {if $filters.isLed eq 'y'}selected{/if}>Yes</option>
+								<option value="n" {if $filters.isLed eq 'n'}selected{/if}>No</option>
+							</select>
+						</div>
+		            </li>
+		            
+		            <li>
+		                <h5 class="booking-filters-title">Music System?</h5>
+		                <div class="form-group">
+			                <select id="isLed" name="isMusicSys" class="form-control">
+								<option value="">ALL</option>
+								<option value="y" {if $filters.isMusicSys eq 'y'}selected{/if}>Yes</option>
+								<option value="n" {if $filters.isMusicSys eq 'n'}selected{/if}>No</option>
+							</select>
+						</div>
+		            </li>
+		            
+		            <li>
+		                <h5 class="booking-filters-title">OrderBy Fare(Rent per km)</h5>
+		                <div class="form-group">
+							<select id="fareOrderBy" name="fareOrderBy" class="form-control">
+								<option value="asc" {if $filters.fareOrderBy eq 'asc'}selected{/if}>Low to High</option>
+								<option value="desc" {if $filters.fareOrderBy eq 'desc'}selected{/if}>High to Low</option>
+							</select>
+						</div>
+		            </li>
+		            <li>
+		            	<div class="text-center">
+		            		<button class="btn btn-primary" type="submit">Filter</button>
+		            	</div>	
+		            </li>
+		        </ul>        
+	        </aside>
+	     </form>   
+   	</div>    
+   	
+   	<div class="col-md-6">
+   		
+   		<ul class="booking-list">
+   			
+   			{if !empty($searchResults)}
+				{foreach from=$searchResults item=vehicle}
+					
+					<li>
+			            <a class="booking-item" href="/vehicle/detail/id/{$vehicle.vehicle_id}">
+			                <div class="row">
+			                    <div class="col-md-4">
+			                        <div class="booking-item-car-img">
+			                        	<img src="{$smarty.const.IMAGE_URL}{$vehicle.image1}" alt="{$vehicle.vehicle_name}"/>
+			                            <p class="booking-item-car-title">{$vehicle.vehicle_name}</p>
+			                        </div>
+			                    </div>
+			                    
+			                    <div class="col-md-5">
+			                        <div class="row">
+			                            <div class="col-md-12">
+			                                <ul class="booking-item-features booking-item-features-sign clearfix">
+			                                    <li rel="tooltip" data-placement="top" title="" data-original-title="Seating Capacity">
+			                                    	<i class="fa fa-male"></i>
+			                                    	<span class="booking-item-feature-sign">x {$vehicle.seating_cap}</span>
+			                                    </li>
+			                                    <li rel="tooltip" data-placement="top" title="" data-original-title="Baggage Quantity">
+			                                    	<i class="fa fa-briefcase"></i>
+			                                    	<span class="booking-item-feature-sign">x {$vehicle.baggage_qty}</span>
+			                                    </li>
+			                                    <li rel="tooltip" data-placement="top" title="{$vehicle.fuel_type} Vehicle">
+			                                    	<i class="im im-diesel"></i>
+			                                    	<span class="booking-item-feature-sign">{$vehicle.fuel_type}</span>
+			                                    </li>
+			                                </ul>
+			                                <ul class="booking-item-features booking-item-features-small clearfix">
+			                                
+			                                	{if $vehicle.satellite_navigation eq 'y'}
+			                                		<li rel="tooltip" data-placement="top" title="" data-original-title="Satellite Navigation">
+				                                    	<i class="im im-satellite"></i>
+				                                    </li>
+			                                	{/if}
+			                                
+			                                	{if $vehicle.is_music_system eq 'y'}
+			                                		<li rel="tooltip" data-placement="top" title="" data-original-title="Stereo CD/MP3">
+				                                    	<i class="im im-stereo"></i>
+				                                    </li>
+			                                	{/if}
+			                                	
+			                                	{if $vehicle.is_led eq 'y'}
+			                                		<li rel="tooltip" data-placement="top" title="" data-original-title="Led Tv">
+			                                    		<i class="im im-tv"></i>
+			                                    	</li>
+			                                	{/if}
+			                                	
+			                                	{if $vehicle.power_door_locks eq 'y'}
+			                                		<li rel="tooltip" data-placement="top" title="" data-original-title="Power Door Locks">
+				                                    	<i class="im im-lock"></i>
+				                                    </li>
+			                                	{/if}
+			                                	
+			                                	{if $vehicle.power_windows eq 'y'}
+			                                		<li rel="tooltip" data-placement="top" title="" data-original-title="Power Windows">
+			                                			<i class="im im-car-window"></i>
+			                                    	</li>
+			                                	{/if}
+			                                </ul>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    
+			                    <div class="col-md-3">
+			                    	<div class="text-center">
+			                    		<span class="booking-item-price">₹ {$vehicle.basic_fare}</span>
+			                    		<span>per km</span>
+			                    	</div>
+			                    	<div class="text-center">
+			                        	<span rel="tooltip" class="btn btn-primary view-detail-btn" data-original-title="Car / Contact Details">View Details</span>
+			                        </div>	
+			                    </div>
+			                    
+			        		</div>
+			        	</a>
+			        </li>			    
+				{/foreach}
+			{else}
+				<h2>Search results not found !</h2>								
+			{/if}
+   		</ul>  	
+   	</div>
+   	
+   	<div class="col-md-3">
+   		
+   		<div class="search-page-ads-vertical">
+   			<img src="../images/banner_160x600.png" />
+   		</div>
+   		
+   	
+   	</div>
+   	
+</div>
+

@@ -1,0 +1,14 @@
+/*
+
+Application specific css
+
+*/
+
+.linear-view-date
+{
+	background:#fafafa;
+	padding:5px;
+}
+.content-order-detail{
+	position : fixed;
+}

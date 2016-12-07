@@ -1,0 +1,245 @@
+/*YOUR CUSTOM STYLES*/
+
+
+header#top-header{  
+		background-color:#262626; 
+		display: block;
+		position:relative; 
+		z-index:1;
+		border-bottom: 2px solid #ed8323;
+		padding: 05px 0px;
+}
+
+header#top-header .logo {
+    color: #ffffff;
+    float: left;
+    margin-top: 05px;
+}
+
+header#top-header .fa.fa-car{ font-size:42px;}
+.menubar{ float:right;}
+
+.navbar-default{ background:none; border:0px; margin-bottom:0px;}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{ background:none; color:#ffffff;}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{ color:#f5f5f5; font-size:16px;}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{ background:#000; color:#ffffff;}
+.navbar-nav > li > .dropdown-menu{ background:#000000}
+.navbar-nav > li > .dropdown-menu a{ color:#ffffff; padding:10px 20px;}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{ background:#ffffff; color:#000}
+
+header#top-header .navbar-collapse ul > li > a{
+	margin-right: 10px;
+    padding-right: 10px;
+    border-right: 2px solid #4d4d4d;
+    transition: 0.5s;
+}
+
+header#top-header .navbar-collapse ul > li:hover a{
+	color: #ed8323;
+	
+}
+
+header#top-header .navbar-collapse ul > li:last-child {
+	border: none;
+}
+
+
+@media only screen and (min-width:320px) and (max-width:767px)
+{
+	.menubar{float:none;}
+	header#top-header .navbar-collapse {
+		margin-top: 05px;
+	}
+	header#top-header .navbar-collapse ul > li {
+		border-right: none;
+		border-bottom: 1px solid #4d4d4d;
+		margin-right: 0px;
+	}
+}
+
+
+.view-detail-btn {
+	margin-top: 10px;
+}
+
+.booking-filters h3 {
+	font-size: 26px;
+}
+
+.booking-filters h5 {
+	font-size: 16px;
+}
+
+
+.booking-item-details {
+	padding-bottom: 15px;	
+}
+
+.car-details .booking-details-tabbable .tab-content {
+	border: 1px solid #ddd;
+	border-top: none;
+}
+
+
+.car-details .booking-details-tabbable a[data-toggle="tab"] {
+	color: #c96810 !important;
+}
+
+.car-details .contact-details {
+	padding-top: 40px;
+}
+
+.car-details h5 {
+	font-family: 'Roboto', arial, helvetica, sans-serif;
+	line-height: 1em;
+	margin-top: 0;
+    font-weight: 300;
+    color: #565656;
+    margin-bottom: 10px;
+    padding-bottom: 05px;
+    border-bottom: 2px solid #ddd;
+}
+
+.car-details .car-detail-bottom h5 {
+	border: none;
+}
+
+.car-details .contact-details .details > ul, .car-details .car-detail .details > ul{
+	display: block;
+	overflow: hidden;	
+	padding: 0px;
+	font-size: 13px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.car-details .contact-details .details > ul > li > div, .car-details .car-detail .details > ul > li > div {
+	padding-left: 0px;
+	margin-bottom: 5px;
+}
+
+.car-details .contact-details .details > ul > li > .label1, .car-details .car-detail .details > ul > li > .label1 {
+	color: #737373;
+	padding: 0px;
+	margin: 0px;	
+	font-weight: 700;
+	width: 45%;
+	float: left;
+}
+
+.car-details .contact-details .details > ul > li > .value {
+	width: 55%;
+	float: left;
+}
+
+.car-features > ul {
+	list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.car-features > ul > li > i{
+	float: left;
+	height: 35px;
+    width: 35px;
+    text-align: center;
+    line-height: 35px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+    font-size: 23px;
+    display: block;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #686868;
+}
+
+.car_location_map {
+	height: 200px;
+	border: 1px solid #ddd;	
+}
+.car-features > ul > li {
+	margin: 0px 5px 5px 0px;
+}
+
+.car-features > ul > li:hover > i{
+	border-color: #d66f11;
+}
+
+.car-features .car-feature-title {
+	position: relative;
+    line-height: 37px;
+    margin-left: 7px;
+    color: #686868;
+}
+
+.car-features > ul {
+	width: 50%;
+	float: left;
+}
+
+.lh1em {
+	font-size: 30px;
+}
+
+.pagenotfound {
+	background-image:url(../images/img1.jpeg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.pagenotfound .full-page {
+	position: absolute;
+    background: #000;
+    opacity: 0.5;
+}
+
+.pagenotfound .text-data {
+	text-align: center;
+	padding-top: 12%;
+}
+
+.search-page-ads-vertical img{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: block;
+}
+
+
+/* media queries */
+@media (max-width:992px) {
+	.car-details .car-detail-bottom h5 {
+		border-bottom: 2px solid #ddd; 
+	}
+	.car-features {
+		margin-bottom: 35px;
+		display: block;
+		overflow: hidden;
+	}
+}
+
+@media (max-width:375px) {
+	.car-features > ul {
+		float: none;
+		width: 100%;
+	}
+	
+	
+	.car-details .contact-details .details > ul > li > .label1, .car-details .car-detail .details > ul > li > .label1 {
+		width: 100%;
+		float: none;
+	}
+	
+	.car-details .contact-details .details > ul > li > .value {
+		width: 100%;
+		float: none;
+	}
+		
+}
+
+

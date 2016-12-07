@@ -1,0 +1,103 @@
+
+<br/>
+<div class="col-xs-12">
+	{include file="../../partials/error_list.html"}
+	{include file="../../partials/error_messages.html"}
+	
+	<div class="box">
+
+		<div class="box-header with-border">
+			<h3 class="box-title">
+				<i class="fa fa-users"></i> Vehicle List
+			</h3>
+		</div>
+
+		<div class="box-body">
+			<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-hover" id="vehicle_list">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Owner Name</th>
+						<th>Vehicle Name</th>
+						<th>Action</th>
+					</tr>                
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="4" class="dataTables_empty">Loading data..</td>
+					</tr>                
+				</tbody>
+	       		<tfoot>
+	            	<tr>
+						<th>Id</th>
+						<th>Owner Name</th>
+						<th>Vehicle Name</th>
+						<th>Action</th>
+		        	</tr>
+	        	</tfoot>        
+			</table>
+    	</div>
+    </div>
+</div>
+
+{capture name=page_js} {literal}
+	
+<script type="text/javascript" charset="utf-8">
+		
+	function del(id){
+				
+		if(window.confirm("Are you sure you want to delete this vehicle ?")){
+					
+			jQuery.post('/admin/vehicles/delete',{"id": id}, function(data, textStatus){
+						
+				if(textStatus == "success"){
+						
+					if(parseInt(data.status)==1){
+						//redraw datatables
+			
+						vehiclesTable.fnDraw();					
+						alert(data.msg);
+					}
+					else{
+						alert(data.msg);
+					}
+				}else{
+					alert("Unable to complete the request");
+				}
+								
+			},"json");		
+		}else{
+			return false;
+		}	
+	}
+	
+	var vehiclesTable;
+			
+	jQuery(document).ready(function() {
+		
+		var ownerId = {/literal} {$owner} {literal}
+		
+		console.log(ownerId);
+		
+		vehiclesTable = jQuery('#vehicle_list').dataTable({
+			"bPaginate": true,
+			"sPaginationType": "full_numbers",
+			"bServerSide": true,			
+			"sScrollX": "100%",				
+			"sAjaxSource": "/admin/vehicles/list/owner/"+ownerId,
+			"aoColumns": [null,null,null,null],
+			"aoColumnDefs": [
+ 				{ "bSortable": false, "aTargets": [ 3 ] },
+ 				{"mRender": function ( data, type, row ) {
+ 													
+ 					var	deleteLink =' | <a href="javascript:void(0)" onclick="javascript:del('+ row[0] +')">Delete</a>';
+ 					
+ 					return '<a href="/admin/vehicles/edit/id/'+ row[0] +'">Edit</a>' + deleteLink;
+ 														 	
+ 				}, "aTargets": [ 3 ]}
+ 			]
+		 });
+				
+	} );
+</script>
+{/literal} {/capture}

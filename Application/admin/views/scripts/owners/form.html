@@ -1,0 +1,94 @@
+
+<form method="post" action="">
+
+	<div class="box-body">
+		{include file="../../partials/error_list.html"}
+		
+		
+		<div class="row">
+		
+			<div class="col-md-6">
+			
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" name="name" value="{$owner->name}" placeholder="Enter name" >
+				</div>		
+				
+				<div class="form-group">
+					<label for="mobileNo">Mobile no</label>
+						<input type="text" class="form-control" id="mobile_no" name="mobile_no" value="{$owner->mobile_no}" placeholder="Enter mobile no" >
+				</div>
+				
+				<div class="form-group">
+					<label for="alternative_mobile_no">Alternative mobile no</label>
+						<input type="text" class="form-control" id="alt_mobile_no" name="alt_mobile_no" value="{$owner->alt_mobile_no}" placeholder="Enter alternative mobile no" >
+				</div>
+				
+				<div class="form-group">
+					<label for="landline_no">Landline no</label>
+						<input type="text" class="form-control" id="landline_no" name="landline_no" value="{$owner->landline_no}" placeholder="Enter landline no" >
+				</div>
+		
+				<div class="form-group">
+					<label for="email">Email</label>
+						<input type="text" class="form-control" id="email" name="email" value="{$owner->email}" placeholder="Enter alternative email" >
+				</div>
+				
+				<div class="form-group">
+					<label for="email">website</label>
+						<input type="text" class="form-control" id="website" name="website" value="{$owner->website}" placeholder="Enter website name" >
+				</div>
+				
+				<div class="form-group">
+					<label for="licence">Licence no</label>
+						<input type="text" class="form-control" id="licence_no" name="licence_no" value="{$owner->licence_no}" placeholder="Enter licence no" >
+				</div>
+			
+			
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="address1">Address line1</label>
+						<input type="text" class="form-control" id="address_line1" name="address_line1" value="{$owner->address_line1}" placeholder="Enter address line1" >
+				</div>
+		
+				<div class="form-group">
+					<label for="address2">Address line2</label>
+						<input type="text" class="form-control" id="address_line2" name="address_line2" value="{$owner->address_line2}" placeholder="Enter address line2" >
+				</div>
+		
+				<div class="form-group">
+					<label for="city">City</label>
+						<input type="text" class="form-control" id="city" name="city" value="{$owner->city}" placeholder="Enter city" >
+				</div>
+		
+				<div class="form-group">
+					<label for="state">State</label>
+						<input type="text" class="form-control" id="state" name="state" value="{$owner->state}" placeholder="Enter state" >
+				</div>
+		
+				<div class="form-group">
+					<label for="pincode">Pincode</label>
+						<input type="text" class="form-control" id="pincode" name="pincode" value="{$owner->pincode}" placeholder="Enter pincode" >
+				</div>
+		
+				<div class="form-group">
+					<label for="agency_name">Agency name</label>
+						<input type="text" class="form-control" id="agency_name" name="agency_name" value="{$owner->agency_name}" placeholder="Enter agency name" >
+				</div>
+		
+				<div class="form-group">
+					<label for="holder">Holder(Owner/Agency)</label>
+						<input type="text" class="form-control" id="holder" name="holder" value="{$owner->holder}" placeholder="Enter holder" >
+				</div>
+		
+		</div>
+			
+			</div>
+		</div>
+		
+	<div class="box-footer text-center">		 
+    	<button type="submit" class="btn btn-primary">{if $path_info.action eq"add"} Create {else} Update {/if}</button>
+    </div>
+        
+</form>

@@ -1,0 +1,110 @@
+
+<form method="post" action="" enctype = "multipart/form-data">
+	
+	<div class="box-body">
+		{include file="../../partials/error_list.html"}
+		
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="vehicle_name">Vehicle name</label>
+						<input type="text" class="form-control" id="name" name="name" value="{$vehicle->name}" placeholder="Enter vehicle name" >
+				</div>		
+				
+				<div class="form-group">
+					<label for="vehicle_color">Color</label>
+						<input type="text" class="form-control" id="color" name="color" value="{$vehicle->color}" placeholder="Enter vehicle color" >
+				</div>
+				
+				<div class="form-group">
+					<label for="vehicle_model_year">Model year</label>
+						<input type="text" class="form-control" id="model_year" name="model_year" value="{$vehicle->model_year}" placeholder="Enter vehicle model year" >
+				</div>
+				
+				<div class="form-group">
+					<label for="seating_capacity">Seating capacity</label>
+						<input type="text" class="form-control" id="seating_cap" name="seating_cap" value="{$vehicle->seating_cap}" placeholder="Enter seating capacity" >
+				</div>
+				
+				<div class="form-group">
+					<label for="baggage_quantity">Baggage qty</label>
+						<input type="text" class="form-control" id="baggage_qty" name="baggage_qty" value="{$vehicle->baggage_qty}" placeholder="Enter baggage quantity" >
+				</div>
+		
+				<div class="form-group">
+					<label for="vehice_no">Vehicle no</label>
+						<input type="text" class="form-control" id="vehicle_no" name="vehicle_no" value="{$vehicle->vehicle_no}" placeholder="Enter vehicle number" >
+				</div>
+				
+				<div class="form-group">
+					<label for="basic_fare">Basic fare</label>
+						<input type="text" class="form-control" id="basic_fare" name="basic_fare" value="{$vehicle->basic_fare}" placeholder="Enter basic fare" >
+				</div>
+				
+			</div>
+			<div class="col-md-6">
+			
+				<div class="form-group">
+					<label for="vehicle_category">Vehicle category</label>
+					<select id="vehicleCat" name="category" class="form-control" onchange="">
+						<option value="">Select category</option>
+						{html_options options=$vehicleCat selected=$vehicle->category}		
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<label for="fuel_type">Fuel type</label>
+					<select id="fuel_type" name="fuel_type" class="form-control" onchange="">
+						<option value="">Select fuel type</option>
+						{html_options options=$vehicleFuelType selected=$vehicle->fuel_type}		
+					</select>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="music_system">Is Music System Available?</label>
+						<input type="checkbox" id="is_music_system" name="is_music_system" value="y" {if $vehicle->is_music_system eq 'y'}checked{/if}>
+				</div>
+				
+				<div class="form-group">
+					<label for="led_system">Is LED Available?</label>
+						<input type="checkbox" id="is_led" name="is_led" value="y" {if $vehicle->is_led eq 'y'}checked{/if}>
+				</div>
+				
+				<div class="form-group">
+					<label for="satellite_navigation">Satellite navigation available?</label>
+						<input type="checkbox" id="satellite_navigation" name="satellite_navigation" value="y" {if $vehicle->satellite_navigation eq 'y'}checked{/if}>
+				</div>
+				
+				<div class="form-group">
+					<label for="power_door_locks">Power door locks?</label>
+						<input type="checkbox" id="power_door_locks" name="power_door_locks" value="y" {if $vehicle->power_door_locks eq 'y'}checked{/if}>
+				</div>
+				
+				<div class="form-group">
+					<label for="power_windows">Power windows?</label>
+						<input type="checkbox" id="power_windows" name="power_windows" value="y" {if $vehicle->power_windows eq 'y'}checked{/if}>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label-cust">Upload main image</label>
+					<input class="form-control" type="file" name="image1" />
+					{if $vehicle->image1 != ""}
+		            	<img src="{$smarty.const.IMAGE_URL}{$vehicle->image1}" name="previewLogo" style="width: 100px;"/>
+		            {/if}
+												
+				</div>
+			</div>
+		</div>
+		
+				
+		
+		
+	</div>
+	
+	<div class="box-footer text-center">		 
+    	<button type="submit" class="btn btn-primary">{if $path_info.action eq"add"} Add {else} Update {/if}</button>
+    </div>
+        
+</form>
